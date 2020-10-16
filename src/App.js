@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import { Counter } from './features/counter/Counter';
 import './App.css';
 import Login from "./components/auth/Login";
 import {getTokenFromResponse} from "./utils/spotify";
-import SpotifyWebApi from "spotify-web-api-js";
-const spotify=new SpotifyWebApi();
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    getUser,GetUser
+} from './features/counter/spotifySlice';
+import Player from "./components/Player/Player";
+
 function App() {
-    const spotifyHelper=async (token)=>{
-        spotify.setAccessToken(token)
-        const user=await spotify.getMe()
-        console.log(user)
-    }
+    const dispatch = useDispatch();
     const [token,setToken]=useState(null)
     useEffect(()=>{
         const hash =getTokenFromResponse()
@@ -19,7 +18,7 @@ function App() {
         const {access_token}=hash
         if(access_token){
             setToken(access_token)
-            spotifyHelper(access_token)
+            dispatch(GetUser(access_token))
 
         }
 
@@ -30,7 +29,7 @@ function App() {
     <div className="App">
         {
             token?(
-                <div>I am logged in</div>):<Login/>
+                <div><Player/></div>):<Login/>
         }
     </div>
   );
