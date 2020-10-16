@@ -5,7 +5,9 @@
     background-color: black;
 }
 .login >img{
-    width: 100%;
+    max-width: 100%;
+    height: auto;
+
 }
 .login >a{
     padding: 20px;
