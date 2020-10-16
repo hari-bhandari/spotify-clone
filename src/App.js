@@ -3,14 +3,25 @@ import { Counter } from './features/counter/Counter';
 import './App.css';
 import Login from "./components/auth/Login";
 import {getTokenFromResponse} from "./utils/spotify";
-
+import SpotifyWebApi from "spotify-web-api-js";
+const spotify=new SpotifyWebApi();
 function App() {
+    const spotifyHelper=async (token)=>{
+        spotify.setAccessToken(token)
+        const user=await spotify.getMe()
+        console.log(user)
+    }
     const [token,setToken]=useState(null)
     useEffect(()=>{
         const hash =getTokenFromResponse()
         console.log(token)
         window.location.hash=''
-        hash.access_token&&setToken(hash.access_token)
+        const {access_token}=hash
+        if(access_token){
+            setToken(access_token)
+            spotifyHelper(access_token)
+
+        }
 
 
 
