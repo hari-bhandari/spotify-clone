@@ -4,11 +4,12 @@ import Login from "./components/auth/Login";
 import {getTokenFromResponse} from "./utils/spotify";
 import { useSelector, useDispatch } from 'react-redux';
 import {
-    getUser,GetUser
+    getUser,GetUser,User
 } from './features/counter/spotifySlice';
 import Player from "./components/Player/Player";
 
 function App() {
+    const user = useSelector(User);
     const dispatch = useDispatch();
     const [token,setToken]=useState(null)
     useEffect(()=>{
@@ -19,7 +20,6 @@ function App() {
         if(access_token){
             setToken(access_token)
             dispatch(GetUser(access_token))
-
         }
 
 
@@ -29,7 +29,7 @@ function App() {
     <div className="App">
         {
             token?(
-                <div><Player/></div>):<Login/>
+                <div><Player name={user?.display_name}/></div>):<Login/>
         }
     </div>
   );

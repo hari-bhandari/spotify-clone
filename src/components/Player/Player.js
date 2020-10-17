@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Player = props => {
+const Player = ({name}) => {
     return (
         <div>
-            I am logged in
+            I am logged in : {name}
         </div>
     );
 };

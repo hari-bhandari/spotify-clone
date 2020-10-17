@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import SpotifyWebApi from "spotify-web-api-js";
-const spotify=new SpotifyWebApi();
+const Spotify=new SpotifyWebApi();
 
 export const spotifySlice = createSlice({
   name: 'spotify',
@@ -21,12 +21,10 @@ export const {getUser} = spotifySlice.actions;
 
 export default spotifySlice.reducer;
 export const GetUser = token => async dispatch => {
-  spotify.setAccessToken(token)
-  const user = await spotify.getMe()
+  Spotify.setAccessToken(token)
+  const user = await Spotify.getMe()
   dispatch(getUser(user));
 };
+export const User = state => state.spotify.user;
 
 
-const getMe=async (token)=>{
-
-}

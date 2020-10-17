@@ -3,6 +3,6 @@ import spotifyReducer from '../features/counter/spotifySlice';
 
 export default configureStore({
   reducer: {
-    counter: spotifyReducer,
+    spotify: spotifyReducer,
   },
 });
