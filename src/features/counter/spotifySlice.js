@@ -8,11 +8,15 @@ export const spotifySlice = createSlice({
     user:null,
     playlists:[],
     playing:false,
-    item:null
+    item:null,
+    token:null
   },
   reducers: {
     getUser: (state, action) => {
       state.user=action.payload;
+    },
+    setToken:(state, action) => {
+      state.token=action.payload;
     },
   },
 });
@@ -25,6 +29,9 @@ export const GetUser = token => async dispatch => {
   const user = await Spotify.getMe()
   dispatch(getUser(user));
 };
+export const setToken=token=> async dispatch=>{
+  dispatch(setToken(token));
+}
 export const User = state => state.spotify.user;
 
 
