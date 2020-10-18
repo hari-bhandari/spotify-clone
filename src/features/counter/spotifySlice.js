@@ -21,7 +21,7 @@ export const spotifySlice = createSlice({
   },
 });
 
-export const {getUser} = spotifySlice.actions;
+export const {getUser,setToken} = spotifySlice.actions;
 
 export default spotifySlice.reducer;
 export const GetUser = token => async dispatch => {
@@ -29,9 +29,10 @@ export const GetUser = token => async dispatch => {
   const user = await Spotify.getMe()
   dispatch(getUser(user));
 };
-export const setToken=token=> async dispatch=>{
+export const SetToken=token=> async dispatch=>{
   dispatch(setToken(token));
 }
 export const User = state => state.spotify.user;
+export const Token = state => state.spotify.token;
 
 
