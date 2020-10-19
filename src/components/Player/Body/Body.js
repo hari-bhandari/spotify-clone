@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Body = props => {
     return (
-        <div>
+        <div className="body">
             i am the body
 
         </div>
