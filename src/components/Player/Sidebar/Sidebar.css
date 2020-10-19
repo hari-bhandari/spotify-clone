@@ -9,3 +9,9 @@
     height: 100vh;
     background-color: #040404;
 }
+.sidebar__logo{
+    margin-right: auto;
+    height: 70px;
+    padding: 10px;
+
+}
