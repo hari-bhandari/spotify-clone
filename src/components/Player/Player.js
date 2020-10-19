@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const Player = ({name}) => {
+import './Player.css'
+const Player = ({spotify}) => {
     return (
-        <div>
-            I am logged in : {name}
+        <div className="player">
+            <div className="player__body">
+            {/*    Sidebar*/}
+            {/*    body*/}
+            </div>
+        {/*    footer*/}
         </div>
     );
 };
 
 Player.propTypes = {
-
+    spotify: PropTypes.object.isRequired
 };
 
 export default Player;
