@@ -4,7 +4,7 @@ import Login from "./components/auth/Login";
 import {getTokenFromResponse} from "./utils/spotify";
 import { useSelector, useDispatch } from 'react-redux';
 import {
-    getUser,User,Token,setToken
+    getUser,User,Token,setToken,getUserPlaylists
 } from './features/counter/spotifySlice';
 import Player from "./components/Player/Player";
 import SpotifyWebApi from "spotify-web-api-js";
@@ -16,7 +16,7 @@ function App() {
     const token=useSelector(Token)
     useEffect(()=>{
         const hash =getTokenFromResponse()
-        window.location.hash=''
+        // window.location.hash=''
         const {access_token}=hash
         if(access_token){
             dispatch(setToken(access_token))
@@ -24,6 +24,9 @@ function App() {
             Spotify.getMe().then((response)=>{
                 console.log(response)
                 dispatch(getUser(response))
+            })
+            Spotify.getUserPlaylists().then((response)=>{
+                dispatch(getUserPlaylists(response))
             })
 
         }

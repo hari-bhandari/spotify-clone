@@ -4,7 +4,8 @@ import './Footer.css'
 const Footer = props => {
     return (
         <div className="footer">
-            <h1>I am the footer</h1>
+            <div className="footer__left"></div>
+
         </div>
     );
 };

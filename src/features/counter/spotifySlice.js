@@ -9,7 +9,7 @@ export const spotifySlice = createSlice({
     playlists:[],
     playing:false,
     item:null,
-    token:'BQBHUa74ZVQM-GXfGAYS3v-tmJ1gw…iJxoC13EL'
+    token:null
   },
   reducers: {
     getUser: (state, action) => {
@@ -18,13 +18,17 @@ export const spotifySlice = createSlice({
     setToken:(state, action) => {
       state.token=action.payload;
     },
+    getUserPlaylists:(state, action) => {
+      state.playlists=action.payload;
+    },
   },
 });
 
-export const {getUser,setToken} = spotifySlice.actions;
+export const {getUser,setToken,getUserPlaylists} = spotifySlice.actions;
 
 export default spotifySlice.reducer;
 export const User = state => state.spotify.user;
 export const Token = state => state.spotify.token;
+export const Playlists = state => state.spotify.playlists;
 
 
