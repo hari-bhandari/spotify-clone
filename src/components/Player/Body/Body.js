@@ -2,35 +2,42 @@ import React from 'react';
 import './Body.css'
 import PropTypes from 'prop-types';
 import Header from "./Header";
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    DiscoverWeekly
+} from '../../../features/counter/spotifySlice';
+import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 
 const Body = ({spotify}) => {
+    const discoverWeekly=useSelector(DiscoverWeekly)
     return (
         <div className="body">
             <Header spotify={spotify} />
 
             <div className="body__info">
-                <img src={"https://newjams-images.scdn.co/v2/discover-weekly/Ivsw3LNAca4betPc3vw4loerVRPov1kqGMkPVmndN1FOWhe4wV9YxwRApgTj9fiszJ1St2iQtWKn_A9L71bUf2957J5jUHX5YI3sFm8IAulFBDPS3oppgd3DlojoUP8NnDJBcP6gm_yRI_BdIApVTg==/NDM6MzU6NzBUNzItMjAtMA==/default"} alt="" />
+                <img src={discoverWeekly?.images[0].url} alt="" />
                 <div className="body__infoText">
                     <strong>PLAYLIST</strong>
                     <h2>Discover Weekly</h2>
-                    <p>a</p>
+                    <p>{discoverWeekly?.description}</p>
                 </div>
             </div>
 
-            {/*<div className="body__songs">*/}
-            {/*    <div className="body__icons">*/}
-            {/*        <PlayCircleFilledIcon*/}
-            {/*            className="body__shuffle"*/}
-            {/*            onClick={playPlaylist}*/}
-            {/*        />*/}
-            {/*        <FavoriteIcon fontSize="large" />*/}
-            {/*        <MoreHorizIcon />*/}
-            {/*    </div>*/}
+            <div className="body__songs">
+                <div className="body__icons">
+                    <PlayCircleFilledIcon
+                        className="body__shuffle"
+                    />
+                    <FavoriteIcon fontSize="large" />
+                    <MoreHorizIcon />
+                </div>
 
-            {/*    {discover_weekly?.tracks.items.map((item) => (*/}
-            {/*        <SongRow playSong={playSong} track={item.track} />*/}
-            {/*    ))}*/}
-            {/*</div>*/}
+                {discoverWeekly?.tracks.items.map((item) => (
+                    <SongRow playSong={playSong} track={item.track} />
+                ))}
+            </div>
         </div>
     );
 };

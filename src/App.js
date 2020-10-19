@@ -4,7 +4,7 @@ import Login from "./components/auth/Login";
 import {getTokenFromResponse} from "./utils/spotify";
 import { useSelector, useDispatch } from 'react-redux';
 import {
-    getUser,User,Token,setToken,getUserPlaylists
+    getUser,User,Token,setToken,getUserPlaylists,setDiscoverWeekly
 } from './features/counter/spotifySlice';
 import Player from "./components/Player/Player";
 import SpotifyWebApi from "spotify-web-api-js";
@@ -22,11 +22,13 @@ function App() {
             dispatch(setToken(access_token))
             Spotify.setAccessToken(access_token)
             Spotify.getMe().then((response)=>{
-                console.log(response)
                 dispatch(getUser(response))
             })
             Spotify.getUserPlaylists().then((response)=>{
                 dispatch(getUserPlaylists(response))
+            })
+            Spotify.getPlaylist('37i9dQZEVXcG2cftDkVej0').then((response)=>{
+                dispatch(setDiscoverWeekly(response))
             })
 
         }

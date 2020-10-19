@@ -9,7 +9,8 @@ export const spotifySlice = createSlice({
     playlists:[],
     playing:false,
     item:null,
-    token:null
+    token:null,
+    discoverWeekly:null
   },
   reducers: {
     getUser: (state, action) => {
@@ -21,14 +22,18 @@ export const spotifySlice = createSlice({
     getUserPlaylists:(state, action) => {
       state.playlists=action.payload;
     },
+    setDiscoverWeekly:(state, action) => {
+      state.discoverWeekly=action.payload;
+    },
   },
 });
 
-export const {getUser,setToken,getUserPlaylists} = spotifySlice.actions;
+export const {getUser,setToken,getUserPlaylists,setDiscoverWeekly} = spotifySlice.actions;
 
 export default spotifySlice.reducer;
 export const User = state => state.spotify.user;
 export const Token = state => state.spotify.token;
 export const Playlists = state => state.spotify.playlists;
+export const DiscoverWeekly = state => state.spotify.discoverWeekly;
 
 
