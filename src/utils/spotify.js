@@ -8,6 +8,8 @@ const scopes = [
     "user-read-playback-state",
     "user-top-read",
     "user-modify-playback-state",
+    "playlist-read-private",
+    "playlist-modify-public"
 ];
 
 export const getTokenFromResponse = () => {
@@ -17,7 +19,6 @@ export const getTokenFromResponse = () => {
         .reduce((initial, item) => {
             let parts = item.split("=");
             initial[parts[0]] = decodeURIComponent(parts[1]);
-
             return initial;
         }, {});
 };

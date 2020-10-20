@@ -18,10 +18,10 @@ const Body = ({spotify}) => {
             <Header spotify={spotify} />
 
             <div className="body__info">
-                <img src={discoverWeekly?.images[0].url} alt="" />
+                <img src={discoverWeekly?.images[0]?.url} alt="" />
                 <div className="body__infoText">
                     <strong>PLAYLIST</strong>
-                    <h2>Discover Weekly</h2>
+                    <h2>{discoverWeekly?.name}</h2>
                     <p>{discoverWeekly?.description}</p>
                 </div>
             </div>

@@ -8,7 +8,7 @@ const Player = ({spotify}) => {
     return (
         <div className="player">
             <div className="player__body">
-            <Sidebar/>
+            <Sidebar spotify={spotify}/>
             <Body/>
             </div>
         <Footer/>

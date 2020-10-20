@@ -8,9 +8,11 @@ import {
 } from './features/counter/spotifySlice';
 import Player from "./components/Player/Player";
 import SpotifyWebApi from "spotify-web-api-js";
+import SpotifyPlayer from "react-spotify-player";
 const Spotify=new SpotifyWebApi();
 
 function App() {
+
     const user = useSelector(User);
     const dispatch = useDispatch();
     const token=useSelector(Token)
@@ -36,8 +38,17 @@ function App() {
 
 
     },[token])
+    const size = {
+        width: '100%',
+        height: 300,
+    };
+    const view = 'list'; // or 'coverart'
+    const theme = 'black'; // or 'white'
+
+
     return (
         <div className="App">
+
             {
                 token?(
                     <div><Player spotify={Spotify} name={user?.display_name}/></div>):<Login/>

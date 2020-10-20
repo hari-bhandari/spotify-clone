@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
     Playlists
 } from '../../../features/counter/spotifySlice';
-const Sidebar = props => {
+const Sidebar = ({spotify}) => {
     const playlists=useSelector(Playlists)
     return (
         <div className="sidebar">
@@ -25,7 +25,7 @@ const Sidebar = props => {
             <strong className="sidebar__title">Playlists</strong>
             <hr/>
             {playlists?.items?.map(playlist=>(
-                <SidebarOption optionText={playlist.name}/>
+                <SidebarOption optionText={playlist.name} id={playlist.id} spotify={spotify}/>
             ))}
 
 
