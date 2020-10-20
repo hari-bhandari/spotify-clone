@@ -9,6 +9,7 @@ import {
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import SongRow from "./SongRow";
 
 const Body = ({spotify}) => {
     const discoverWeekly=useSelector(DiscoverWeekly)
@@ -35,7 +36,7 @@ const Body = ({spotify}) => {
                 </div>
 
                 {discoverWeekly?.tracks.items.map((item) => (
-                    <SongRow playSong={playSong} track={item.track} />
+                    <SongRow  track={item.track} />
                 ))}
             </div>
         </div>
