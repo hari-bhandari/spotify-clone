@@ -10,12 +10,26 @@ import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import './Footer.css'
 import Grid from "@material-ui/core/Grid";
 import Slider from "@material-ui/core/Slider";
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch} from 'react-redux';
 import {
-    Item
+    Item,setPlaying,Playing,setItem
 } from '../../../features/counter/spotifySlice';
-const Footer = () => {
+const Footer = ({spotify}) => {
+    const dispatch=useDispatch()
     const item=useSelector(Item)
+    const playing=useSelector(Playing)
+
+    const handlePlayPause = () => {
+        if (playing) {
+            spotify.pause();
+        } else {
+            spotify.play();
+            dispatch(setPlaying(true))
+
+        }
+    };
+
+
     return (
         <div className="footer">
 
