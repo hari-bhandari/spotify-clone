@@ -36,9 +36,6 @@ function App() {
 
                 if(response)
                 dispatch(setCurrentMusic({name:response?.item?.name,artist:response?.item?.artists[0].name,imageUrl:response?.item?.album?.images[0].url}))
-
-
-
             });
 
 
