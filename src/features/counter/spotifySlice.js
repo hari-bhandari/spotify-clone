@@ -38,5 +38,6 @@ export const User = state => state.spotify.user;
 export const Token = state => state.spotify.token;
 export const Playlists = state => state.spotify.playlists;
 export const DiscoverWeekly = state => state.spotify.discoverWeekly;
+export const Item = state => state.spotify.item;
 
 
