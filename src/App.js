@@ -4,7 +4,7 @@ import Login from "./components/auth/Login";
 import {getTokenFromResponse} from "./utils/spotify";
 import { useSelector, useDispatch } from 'react-redux';
 import {
-    getUser,User,Token,setToken,getUserPlaylists,setDiscoverWeekly
+    getUser,User,Token,setToken,getUserPlaylists,setDiscoverWeekly,setCurrentMusic
 } from './features/counter/spotifySlice';
 import Player from "./components/Player/Player";
 import SpotifyWebApi from "spotify-web-api-js";
@@ -31,6 +31,15 @@ function App() {
             Spotify.getPlaylist('37i9dQZEVXcG2cftDkVej0').then((response)=>{
                 dispatch(setDiscoverWeekly(response))
             })
+            Spotify.getMyCurrentPlaybackState().then((response) => {
+                console.log(response)
+
+                if(response)
+                dispatch(setCurrentMusic({name:response?.item?.name,artist:response?.item?.artists[0].name,imageUrl:response?.item?.album?.images[0].url}))
+
+
+
+            });
 
 
         }
