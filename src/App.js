@@ -8,7 +8,6 @@ import {
 } from './features/counter/spotifySlice';
 import Player from "./components/Player/Player";
 import SpotifyWebApi from "spotify-web-api-js";
-import SpotifyPlayer from "react-spotify-player";
 const Spotify=new SpotifyWebApi();
 
 function App() {
@@ -48,6 +47,7 @@ function App() {
 
     return (
         <div className="App">
+
 
             {
                 token?(
