@@ -32,12 +32,18 @@ const Footer = ({spotify}) => {
     const skipNext = () => {
         spotify.skipToNext();
         spotify.getMyCurrentPlayingTrack().then((r) => {
-            dispatch(setCurrentMusic(r))
+            dispatch(setCurrentMusic(r.item))
             dispatch(setPlaying(true))
         });
     };
 
-
+    const skipPrevious = () => {
+        spotify.skipToPrevious();
+        spotify.getMyCurrentPlayingTrack().then((r) => {
+            dispatch(setCurrentMusic(r.item))
+            dispatch(setPlaying(true))
+        });
+    };
 
     return (
         <div className="footer">
