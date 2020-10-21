@@ -1,5 +1,6 @@
 
 .header {
+    margin-top: 0;
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
@@ -11,13 +12,15 @@
 }
 
 .header__left {
-    flex: 0.5;
+    flex: 0.35;
     display: flex;
     background-color: white;
     padding: 10px;
-    border-radius: 30px;
+    border-radius: 39px;
     color: gray;
     align-items: center;
+    height: 30px;
+
 }
 
 .header__left > input {

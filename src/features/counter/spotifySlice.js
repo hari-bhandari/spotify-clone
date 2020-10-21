@@ -28,10 +28,14 @@ export const spotifySlice = createSlice({
     setCurrentMusic:(state, action) => {
       state.item=action.payload;
     },
+    setPlaying:(state, action) => {
+      state.playing=action.payload;
+    }
+
   },
 });
 
-export const {getUser,setToken,getUserPlaylists,setDiscoverWeekly,setCurrentMusic} = spotifySlice.actions;
+export const {getUser,setToken,getUserPlaylists,setDiscoverWeekly,setCurrentMusic,setPlaying} = spotifySlice.actions;
 
 export default spotifySlice.reducer;
 export const User = state => state.spotify.user;
@@ -39,5 +43,6 @@ export const Token = state => state.spotify.token;
 export const Playlists = state => state.spotify.playlists;
 export const DiscoverWeekly = state => state.spotify.discoverWeekly;
 export const Item = state => state.spotify.item;
+export const Playing = state => state.spotify.playing;
 
 

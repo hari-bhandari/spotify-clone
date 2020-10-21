@@ -34,8 +34,13 @@ function App() {
             Spotify.getMyCurrentPlaybackState().then((response) => {
                 console.log(response)
 
-                if(response)
-                dispatch(setCurrentMusic({name:response?.item?.name,artist:response?.item?.artists[0].name,imageUrl:response?.item?.album?.images[0].url}))
+                if(response.item) {
+                    dispatch(setCurrentMusic({
+                        name: response?.item?.name,
+                        artist: response?.item?.artists[0].name,
+                        imageUrl: response?.item?.album?.images[0].url
+                    }))
+                }
             });
 
 
@@ -44,14 +49,6 @@ function App() {
 
 
     },[token])
-    const size = {
-        width: '100%',
-        height: 300,
-    };
-    const view = 'list'; // or 'coverart'
-    const theme = 'black'; // or 'white'
-
-
     return (
         <div className="App">
 

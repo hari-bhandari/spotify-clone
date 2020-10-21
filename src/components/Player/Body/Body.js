@@ -13,12 +13,14 @@ import SongRow from "./SongRow";
 
 const Body = ({spotify}) => {
     const discoverWeekly=useSelector(DiscoverWeekly)
+
+
     return (
         <div className="body">
             <Header spotify={spotify} />
 
 
-            {discoverWeekly&&(<div className="body__info">
+            {discoverWeekly!==null&&(<div className="body__info">
                 <img src={discoverWeekly?.images[0]?.url} alt="" />
                 <div className="body__infoText">
                     <strong>PLAYLIST</strong>
@@ -37,7 +39,7 @@ const Body = ({spotify}) => {
                 </div>
 
                 {discoverWeekly?.tracks.items.map((item) => (
-                    <SongRow  track={item.track} />
+                    <SongRow  track={item.track} spotify={spotify} />
                 ))}
             </div>
         </div>
