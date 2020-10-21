@@ -10,22 +10,15 @@ import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import './Footer.css'
 import Grid from "@material-ui/core/Grid";
 import Slider from "@material-ui/core/Slider";
-import Script from 'react-load-script'
-
+import { useSelector } from 'react-redux';
+import {
+    Item
+} from '../../../features/counter/spotifySlice';
 const Footer = () => {
-    useEffect(()=>{
-
-    },[])
-    const [player,setPlayer]=useState(null)
-
+    const item=useSelector(Item)
     return (
         <div className="footer">
-            <Script
-                url="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"
-                // onCreate={this.handleScriptCreate.bind(this)}
-                // onError={this.handleScriptError.bind(this)}
-                // onLoad={this.handleScriptLoad.bind(this)}
-            />
+
             <div className="footer__left">
                 <img
                     className="footer__albumLogo"
