@@ -12,7 +12,7 @@ import Grid from "@material-ui/core/Grid";
 import Slider from "@material-ui/core/Slider";
 import { useSelector,useDispatch} from 'react-redux';
 import {
-    Item,setPlaying,Playing,setItem
+    Item,setPlaying,Playing,setCurrentMusic
 } from '../../../features/counter/spotifySlice';
 const Footer = ({spotify}) => {
     const dispatch=useDispatch()
@@ -28,6 +28,15 @@ const Footer = ({spotify}) => {
 
         }
     };
+
+    const skipNext = () => {
+        spotify.skipToNext();
+        spotify.getMyCurrentPlayingTrack().then((r) => {
+            dispatch(setCurrentMusic(r))
+            dispatch(setPlaying(true))
+        });
+    };
+
 
 
     return (
