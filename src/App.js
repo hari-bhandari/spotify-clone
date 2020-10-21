@@ -32,6 +32,7 @@ function App() {
                 dispatch(setDiscoverWeekly(response))
             })
 
+
         }
 
 

@@ -22,12 +22,12 @@ const Footer = () => {
             <div className="footer__left">
                 <img
                     className="footer__albumLogo"
-                    src='https://upload.wikimedia.org/wikipedia/en/0/0b/JustinBieberLoveYourself.png'
-                    alt='ha'
+                    src={item?.imageUrl}
+                    alt={item?.artist}
                 />
                 <div className="footer__songInfo">
-                    <h4>Yeah</h4>
-                    <p>Us</p>
+                    <h4>{item?.name}</h4>
+                    <p>{item?.artist}</p>
                 </div>
             </div>
             <div className="footer__center">
